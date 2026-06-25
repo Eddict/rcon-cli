@@ -1,4 +1,4 @@
-module github.com/itzg/rcon-cli
+module github.com/Eddict/rcon-cli
 
 go 1.26.4
 

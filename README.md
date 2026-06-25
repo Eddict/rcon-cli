@@ -1,16 +1,16 @@
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/itzg/rcon-cli)](https://github.com/itzg/rcon-cli/releases/latest)
-[![test](https://github.com/itzg/rcon-cli/actions/workflows/test.yml/badge.svg)](https://github.com/itzg/rcon-cli/actions/workflows/test.yml)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Eddict/rcon-cli)](https://github.com/Eddict/rcon-cli/releases/latest)
+[![test](https://github.com/Eddict/rcon-cli/actions/workflows/test.yml/badge.svg)](https://github.com/Eddict/rcon-cli/actions/workflows/test.yml)
 
 
 A little RCON cli based on james4k's RCON library for golang.
 
 ## Installation
 
-1. Download the appropriate binary for your platform from the [latest releases](https://github.com/itzg/rcon-cli/releases/latest)
+1. Download the appropriate binary for your platform from the [latest releases](https://github.com/Eddict/rcon-cli/releases/latest)
 
 2. On UNIX-y platforms, set the binary to be executable - done!
 
-If you [have Go](https://golang.org/dl/) you could also simply `go install github.com/itzg/rcon-cli@latest && rcon-cli -h`.
+If you [have Go](https://golang.org/dl/) you could also simply `go install github.com/Eddict/rcon-cli@latest && rcon-cli -h`.
 
 ## Usage
 

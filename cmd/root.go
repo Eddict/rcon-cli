@@ -19,7 +19,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/itzg/rcon-cli/cli"
+	"github.com/Eddict/rcon-cli/cli"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"net"
