@@ -16,4 +16,4 @@ jobs:
       image-registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
       image-registry-password: ${{ secrets.DOCKERHUB_TOKEN }}
       # scoop-tap-github-token: ${{ secrets.SCOOP_TAP_GITHUB_TOKEN }}
-      scoop-tap-github-token: ${{ secrets.DOCKERHUB_TOKEN }}
+      scoop-tap-github-token: ${{ secrets.GITHUB_TOKEN }} 
