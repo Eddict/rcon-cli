@@ -11,29 +11,16 @@ release:
     name: rcon-cli
 builds:
 - goos:
-  - linux
-  - darwin
   - windows
   goarch:
-  - "386"
   - amd64
-  - arm
-  - arm64
-  - riscv64
-  goarm:
-  - "6"
-  - "7"
-  ignore:
-    - goos: darwin
-      goarch: riscv64
   main: .
   binary: rcon-cli
   env:
     - CGO_ENABLED=0
 archives:
   -
-    name_template: '{{ .Binary }}_{{.Version}}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{
-      .Arm }}{{ end }}'
+    name_template: '{{ .Binary }}_{{.Version}}_{{ .Os }}_{{ .Arch }}'
     files:
     - LICENSE*
     - README*
@@ -42,89 +29,10 @@ changelog:
     exclude:
       - '^ci:'
       - '^docs:'
-dockers:
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-amd64"
-    dockerfile: Dockerfile.release
-    use: buildx
-    goos: linux
-    goarch: amd64
-    build_flag_templates:
-      - "--platform=linux/amd64"
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-amd64"
-    dockerfile: Dockerfile.ubuntu
-    use: buildx
-    goos: linux
-    goarch: amd64
-    build_flag_templates:
-      - "--platform=linux/amd64"
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-arm64"
-    dockerfile: Dockerfile.release
-    use: buildx
-    goos: linux
-    goarch: arm64
-    build_flag_templates:
-      - "--platform=linux/arm64"
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-arm64"
-    dockerfile: Dockerfile.ubuntu
-    use: buildx
-    goos: linux
-    goarch: arm64
-    build_flag_templates:
-      - "--platform=linux/arm64"
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-armv7"
-    dockerfile: Dockerfile.release
-    use: buildx
-    goos: linux
-    goarch: arm
-    goarm: '7'
-    build_flag_templates:
-      - "--platform=linux/arm/v7"
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-armv7"
-    dockerfile: Dockerfile.ubuntu
-    use: buildx
-    goos: linux
-    goarch: arm
-    goarm: '7'
-    build_flag_templates:
-      - "--platform=linux/arm/v7"
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-riscv64"
-    dockerfile: Dockerfile.release
-    use: buildx
-    goos: linux
-    goarch: riscv64
-    build_flag_templates:
-      - "--platform=linux/riscv64"
-  - image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-riscv64"
-    dockerfile: Dockerfile.ubuntu
-    use: buildx
-    goos: linux
-    goarch: riscv64
-    build_flag_templates:
-      - "--platform=linux/riscv64"
 docker_manifests:
   - name_template: "eddictnl/rcon-cli:latest"
     image_templates:
       - "eddictnl/rcon-cli:{{ .Version }}-amd64"
-      - "eddictnl/rcon-cli:{{ .Version }}-arm64"
-      - "eddictnl/rcon-cli:{{ .Version }}-armv7"
-      - "eddictnl/rcon-cli:{{ .Version }}-riscv64"
   - name_template: "eddictnl/rcon-cli:{{ .Version }}"
     image_templates:
       - "eddictnl/rcon-cli:{{ .Version }}-amd64"
-      - "eddictnl/rcon-cli:{{ .Version }}-arm64"
-      - "eddictnl/rcon-cli:{{ .Version }}-armv7"
-      - "eddictnl/rcon-cli:{{ .Version }}-riscv64"
-  - name_template: "eddictnl/rcon-cli:{{ .Version }}-ubuntu"
-    image_templates:
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-amd64"
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-arm64"
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-armv7"
-      - "eddictnl/rcon-cli:{{ .Version }}-ubuntu-riscv64"
