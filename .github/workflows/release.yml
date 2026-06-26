@@ -8,6 +8,10 @@ on:
 
 jobs:
   release:
+    permissions:
+      contents: write
+      issues: write
+      packages: write
     uses: itzg/github-workflows/.github/workflows/go-with-releaser-image.yml@main
     # uses: itzg/github-workflows/.github/workflows/go-with-releaser.yml@main
     with:
