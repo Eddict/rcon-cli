@@ -12,15 +12,20 @@ release:
 builds:
 - goos:
   - windows
+  - linux
   goarch:
   - amd64
+  goarm:
+  - "6"
+  - "7"
   main: .
   binary: rcon-cli
   env:
     - CGO_ENABLED=0
 archives:
   -
-    name_template: '{{ .Binary }}_{{.Version}}_{{ .Os }}_{{ .Arch }}'
+    name_template: '{{ .Binary }}_{{.Version}}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{
+      .Arm }}{{ end }}'
     files:
     - LICENSE*
     - README*
@@ -29,6 +34,15 @@ changelog:
     exclude:
       - '^ci:'
       - '^docs:'
+dockers:
+  - image_templates:
+      - "eddictnl/rcon-cli:{{ .Version }}-amd64"
+    dockerfile: Dockerfile.release
+    use: buildx
+    goos: linux
+    goarch: amd64
+    build_flag_templates:
+      - "--platform=linux/amd64"
 docker_manifests:
   - name_template: "eddictnl/rcon-cli:latest"
     image_templates:
