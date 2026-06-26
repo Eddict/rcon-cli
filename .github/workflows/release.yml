@@ -9,9 +9,11 @@ on:
 jobs:
   release:
     uses: itzg/github-workflows/.github/workflows/go-with-releaser-image.yml@main
+    # uses: itzg/github-workflows/.github/workflows/go-with-releaser.yml@main
     with:
       go-version-file: "go.mod"
     secrets:
       image-registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
       image-registry-password: ${{ secrets.DOCKERHUB_TOKEN }}
-      scoop-tap-github-token: ${{ secrets.SCOOP_TAP_GITHUB_TOKEN }}
+      # scoop-tap-github-token: ${{ secrets.SCOOP_TAP_GITHUB_TOKEN }}
+      scoop-tap-github-token: ${{ secrets.DOCKERHUB_TOKEN }}
